@@ -64,6 +64,7 @@ java_library {
     // Restrict visibility to only those targets that need to access it.
     visibility: [
         "//art/build/apex",
+        "//art/build/sdk",
         "//external/wycheproof",
         "//libcore",
     ],
@@ -82,30 +83,8 @@ java_library {
     system_modules: "art-module-intra-core-api-stubs-system-modules",
 }
 
-// A guaranteed unstripped version of bouncycastle.
-// The build system may or may not strip the bouncycastle jar, but this one will
-// not be stripped. See b/24535627.
-java_library {
-    name: "bouncycastle-testdex",
-    visibility: [
-        "//art:__subpackages__",
-    ],
-    defaults: ["bouncycastle-defaults"],
-    installable: true,
-
-    srcs: [":bouncycastle_java_files"],
-
-    libs: ["unsupportedappusage"],
-
-    sdk_version: "none",
-    system_modules: "art-module-intra-core-api-stubs-system-modules",
-    dex_preopt: {
-        enabled: false,
-    },
-    java_version: "1.7",
-}
-
 unbundled_visibility = [
+    "//art/build/sdk",
     "//build/make/tools/signapk",
     "//build/make/tools/signtos",
     "//cts/hostsidetests/devicepolicy/app/DeviceOwner",
@@ -187,7 +166,7 @@ java_library_host {
 
 // Bouncycastle subset for use by platform/packages/modules/IPsec project.
 //
-// Avoids including the whole of bouncycastle_unbundled in IPsec.
+// Avoids including the whole of bouncycastle_unbundled in ike.
 //
 // Specifically, SHA1Digest and MD4Digest (and their dependencies) must be used by IKEv2 to support
 // legacy authentication methods.
