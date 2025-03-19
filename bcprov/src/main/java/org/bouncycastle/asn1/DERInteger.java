@@ -1,3 +1,4 @@
+// Android-added: keep DER classes for backwards compatibility
 package org.bouncycastle.asn1;
 
 import java.math.BigInteger;
@@ -17,14 +18,13 @@ public class DERInteger
     {
         super(bytes, true);
     }
-
     public DERInteger(BigInteger value)
     {
         super(value);
     }
-
     public DERInteger(long value)
     {
         super(value);
     }
 }
+// Android-added: keep DER classes for backwards compatibility

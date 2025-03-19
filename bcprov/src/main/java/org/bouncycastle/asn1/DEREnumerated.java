@@ -1,3 +1,4 @@
+// Android-added: keep DER classes for backwards compatibility
 package org.bouncycastle.asn1;
 
 import java.math.BigInteger;
@@ -7,8 +8,7 @@ import java.math.BigInteger;
  */
 public class DEREnumerated
     extends ASN1Enumerated
-{
-    /**
+{    /**
      * @param bytes the value of this enumerated as an encoded BigInteger (signed).
      * @deprecated use ASN1Enumerated
      */
@@ -35,3 +35,4 @@ public class DEREnumerated
         super(value);
     }
 }
+// Android-added: keep DER classes for backwards compatibility
